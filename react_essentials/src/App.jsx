@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+function HelloWorld(){
+  let message = "Like this";
+  return(
+    <div>
+      <hr/>
+      <h3>Hello world from a React component</h3>
+      <h3>A component is just a js function that return pieces of html that can be embebed with js</h3>
+      <h3>{message}</h3>
+    </div>
   )
 }
 
-export default App
+function App() {
+ 
+  return (
+    <div>
+      <h1>This it the main component App</h1>
+      <h2>We'll get out hello world down below</h2>
+      <HelloWorld/>
+    </div>
+  )
+}
+
+export default App;
