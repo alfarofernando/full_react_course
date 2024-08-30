@@ -10,6 +10,15 @@ function HelloWorld(){
   )
 }
 
+
+const dinamicMessage = ["Hello there","Hi, glad to see you","Welcome to AOE2 haha"];
+
+function generateRandomInt(max){
+    return Math.floor(Math.random() * (max+1));
+}
+
+const salute = dinamicMessage[generateRandomInt(2)];
+
 function App() {
  
   return (
@@ -17,6 +26,11 @@ function App() {
       <h1>This it the main component App</h1>
       <h2>We'll get out hello world down below</h2>
       <HelloWorld/>
+      <hr/>
+      <h2>lets get a dinamic message with jsx code every time we reload the page </h2>
+      <h2>{dinamicMessage[generateRandomInt(2)]}</h2>
+      <h2>Or we can simplify the code by adding the function into a constant</h2>
+      <h2>{salute}</h2>
     </div>
   )
 }
