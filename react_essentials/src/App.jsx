@@ -1,8 +1,9 @@
 
 import { useState } from "react";
-import { EXAMPLES } from "./components/Data.js";
+import { CORE_CONCEPTS, EXAMPLES } from "./components/Data.js";
 import TabButton from "./components/TabButton";
-import Ej from "./components/Ej.jsx";
+import CoreConcept from "./components/CoreConcept.jsx";
+
 
 
 function App() {
@@ -16,6 +17,14 @@ function App() {
   return (
     <div id="app">
 
+      <section id="core-concepts">
+        <h2>Core Concepts</h2>
+        <ul>
+          {CORE_CONCEPTS.map((conceptItem, index) => (
+            <CoreConcept key={index} {...conceptItem} />
+          ))}
+        </ul>
+      </section>
       <section id="examples">
         <h2>Examples</h2>
         <menu>
