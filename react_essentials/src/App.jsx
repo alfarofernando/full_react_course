@@ -1,16 +1,19 @@
+
+import { useState } from "react";
 import TabButton from "./components/TabButton";
-import UserLogging from "./components/UserLogging";
 
-
-function handleSelect(selectedButton){
-    console.log(selectedButton);
-}
 
 function App() {
+
+  const [tabContent,setTabContent] = useState("Please select a tab");
+
+  function handleSelect(selectedButton) {
+    setTabContent(selectedButton);
+    console.log(tabContent);
+  }
+
   return (
     <div id="app">
-
-      <UserLogging/>
 
       <section id="examples">
         <h2>Examples</h2>
@@ -20,6 +23,7 @@ function App() {
           <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
           <TabButton onSelect={() => handleSelect('states')}>States</TabButton>
         </menu>
+        <h2>{tabContent}</h2>
       </section>
 
 
