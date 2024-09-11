@@ -6,21 +6,15 @@ export default function Player({name , symbol}) {
 
 
     function handleEditButton(){
-        if(isEditing){
-            setIsEditing(false)
-        }else{
-            setIsEditing(true)
-        }
+        setIsEditing( (editing) => !editing );
     }
 
     let editMessage =  "Edit"
-    if(isEditing){
-        editMessage = "Save"
-    }
-
     let playerName = <span className="player-name">{name}</span>;
+
     if(isEditing) {
-        playerName = <input type="text" required  />
+        playerName = <input type="text" required value={name}  />
+        editMessage = "Save"
     }
 
     return (
