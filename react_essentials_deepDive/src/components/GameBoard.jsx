@@ -1,35 +1,50 @@
 import { useState } from "react";
 
 const initialGameBoard = [
-    [null,null,null],
-    [null,null,null],
-    [null,null,null]
-]; 
+    [null, null, null],
+    [null, null, null],
+    [null, null, null]
+];
 
 
-export default function GameBoard() {
+export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
 
-    const [gameBoard , setGameBoard] = useState(initialGameBoard);
+    const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
-function handleSelectedSquare(rowIndex,colIndex){
-    setGameBoard( (previousGameBoard) => {
-        const updatedBoard = [...previousGameBoard.map((innerArray) => [...innerArray])];
+    function handleSelectedSquare(rowIndex, colIndex) {
+        setGameBoard((previousGameBoard) => {
 
-        updatedBoard[rowIndex][colIndex] = "X";
-        return updatedBoard;
-    } );
-}
+            if (previousGameBoard[rowIndex][colIndex]) {
+                return previousGameBoard;
+            }
+
+            const updatedBoard = [...previousGameBoard.map((innerArray) => 
+                [...innerArray])];
+
+            updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
+
+            onSelectSquare();
+
+            return updatedBoard;
+
+        });
+    }
 
     return (
         <ol id="game-board">
-            {gameBoard.map((row , rowIndex) => (
-                <li key={rowIndex}> 
+            {gameBoard.map((row, rowIndex) => (
+                <li key={rowIndex}>
                     <ol>
-                        {row.map((playerSymbol,colIndex) => (
-                            <li key={colIndex}><button onClick={()=>handleSelectedSquare(rowIndex,colIndex)}>{playerSymbol}</button></li>
+                        {row.map((playerSymbol, colIndex) => (
+                            <li key={colIndex}>
+                                <button onClick={() =>
+                                    handleSelectedSquare(rowIndex, colIndex)}>
+                                    {playerSymbol}
+                                </button>
+                            </li>
                         ))}
                     </ol>
-                </li>) 
+                </li>)
             )}
         </ol>
     );
