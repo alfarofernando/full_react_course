@@ -1,19 +1,19 @@
 import { useState } from "react";
 
-export default function Player({ defaultName , symbol , isActive}) {
+export default function Player({ defaultName , symbol , isActive , onChangeName}) {
 
     const [isEditing , setIsEditing] = useState(false);
-
     const [ newPlayerName , setNewPlayerName] = useState(defaultName);
 
     function handleEditButton(){
         setIsEditing( (editing) => !editing );
+        if(isEditing){
+            onChangeName(symbol,newPlayerName);
+        }
     }
 
     function handleNameChange(e){
         setNewPlayerName(e.target.value);
-
-
     }
 
     let editMessage =  "Edit"
