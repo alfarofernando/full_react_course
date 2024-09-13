@@ -241,11 +241,12 @@ ol {
 
 #log {
   max-width: 20rem;
-  color: #3f3b00;
+  color: black;
   list-style: none;
-  margin: 2rem auto;
+  margin-left: 6rem;
   padding: 0;
-  text-align: center;
+  float: left;
+  
 }
 
 #log li {
