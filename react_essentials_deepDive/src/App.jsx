@@ -126,9 +126,9 @@ function App() {
       );
 
       // Si el jugador actual ya ha realizado 3 movimientos, elimina el primero
-      if (playerMoves.length === 3) {
+      if (playerMoves.length > 2) {
         const updatedTurns = prevTurns.filter(
-          (turn) => !(turn.player === currentPlayer && turn === playerMoves[0])
+          (turn) => !(turn.player === currentPlayer && turn === playerMoves[2])
         );
         console.log("Updated Turns after removal:", updatedTurns); // Añadido para depuración
 
