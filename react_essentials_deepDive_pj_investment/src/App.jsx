@@ -6,11 +6,13 @@ import UserInput from "./components/UserInput";
 
 function App() {
   const [userInput, setUserInput] = useState({
-    initialInvestment: null,
-    annualInvestment: null,
+    initialInvestment: 1000,
+    annualInvestment: 12000,
     expectedReturn: null,
-    duration: null,
+    duration: 10,
   });
+
+  const inputIsValid = userInput.duration >= 1;
 
   function handleChange(inputIdentifier, newValue) {
     setUserInput((prevUserInput) => {
@@ -27,7 +29,7 @@ function App() {
     <div>
       <Header />
       <UserInput onChangeInput={handleChange} userInput={userInput} />
-      <Results userInput={userInput} />
+      {inputIsValid && <Results userInput={userInput} />}
     </div>
   );
 }
