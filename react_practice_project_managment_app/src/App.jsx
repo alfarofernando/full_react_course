@@ -3,6 +3,7 @@ import {useState} from 'react';
 import NewProject from "./components/NewProject";
 import NoProjectSelected from "./components/NoProjectSelected";
 import ProjectSidebar from "./components/PorjectSideBar";
+import SelectedProject from './components/SelectedProject';
 
 function App() {
 
@@ -10,6 +11,15 @@ function App() {
     selectedProjectId: undefined,
     projects: []
  });
+
+function handleSelectProject(id){
+  setProjectState(prevState => {
+    return{
+      ...prevState,
+      selectedProjectId: id,
+    };
+  });
+}
 
  function handleStartAddProject(){
   setProjectState(prevState => {
@@ -47,7 +57,9 @@ function App() {
 // verificamos que estemos recibiendo los datos del contenido de projectState
 // console.log("project list", projectState);
 
- let content;
+ const selectedProject = projectState.projects.find(project => project.id === projectState.selectedProjectId);
+
+ let content = <SelectedProject project={selectedProject} />;
 
  if (projectState.selectedProjectId === null){
     content = <NewProject onAddProject={handleAddProject} onCancelProject={handleCancelAddProject} />
@@ -57,7 +69,7 @@ function App() {
 
   return (
     <main className="h-screen my-8 flex gap-8">
-      <ProjectSidebar onStartAddProject={handleStartAddProject} projects={projectState.projects} />
+      <ProjectSidebar onSelectProject={handleSelectProject} onStartAddProject={handleStartAddProject} projects={projectState.projects} />
       {content}
     </main>
   );
