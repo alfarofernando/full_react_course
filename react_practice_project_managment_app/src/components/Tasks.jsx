@@ -13,8 +13,8 @@ export default function Tasks({tasks , onAddTask , onDeleteTask}){
                 <li key={task.id} className="flex justify-between my-2 py-1 bg-stone-200">
                     <span>{task.text}</span>
                     <button
-                        onClick={onDeleteTask}
-                        className="text-stone-700 hover:text-red-500"
+                        className="text-stone-700 hover:text-red-500" 
+                        onClick={() => onDeleteTask(task.id)}
                     >
                         Clear
                     </button>
