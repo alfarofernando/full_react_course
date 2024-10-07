@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { CartContext } from './store/ShoppingCartContext.jsx';
 import Header from './components/Header.jsx';
 import Shop from './components/Shop.jsx';
 import Product from './components/Product.jsx';
@@ -67,7 +67,7 @@ function App() {
   }
 
   return (
-    <>
+    <CartContext.Provider>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
@@ -79,7 +79,7 @@ function App() {
           </li>
         ))}
       </Shop>
-    </>
+    </CartContext.Provider>
   );
 }
 
